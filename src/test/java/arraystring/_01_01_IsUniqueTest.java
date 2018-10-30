@@ -24,4 +24,7 @@ public class _01_01_IsUniqueTest {
         assertFalse(s.isUnique("abcda"));
     }
 
+    @Test
+    public void withCaseSensitive() { assertTrue(s.isUnique("abDcd")); }
+
 }

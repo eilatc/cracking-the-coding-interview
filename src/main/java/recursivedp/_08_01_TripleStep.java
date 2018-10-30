@@ -7,6 +7,26 @@ package recursivedp;
 class _08_01_TripleStep {
 
     int countWays(int steps) {
-        throw new UnsupportedOperationException();
+        if (steps == 0) { return 1; }
+        if (steps < 0) { return 0; }
+
+        return countWays(steps-3) + countWays(steps-2) + countWays(steps-1);
+    }
+
+    // Using Dynamic Programming
+
+    int dynamicCountWays(int steps) {
+        return dynamicHelper(steps, new int[steps+1]);
+    }
+
+    int dynamicHelper(int steps, int[] memo){
+        if (steps == 0) { return 1; }
+        if (steps < 0) { return 0; }
+
+        if (memo[steps] == 0) {
+            memo[steps] = dynamicHelper(steps-3, memo) +
+                    dynamicHelper(steps-2, memo) + dynamicHelper(steps-1, memo);
+        }
+        return memo[steps];
     }
 }

@@ -52,5 +52,24 @@ public class _08_02_RobotInAGridTest {
         assertEquals(Collections.emptyList(), s.findPath(grid));
     }
 
+    @Test
+    public void withNullInput() {
+        boolean[][] grid = null;
+        assertEquals(Collections.emptyList(), s.findPath(grid));
+    }
+
+    @Test
+    public void testingDynamic() {
+        boolean[][] grid = new boolean[][]{
+                {true, true, false, false, false},
+                {true, false, true, false, false},
+                {true, true, false, true, true},
+                {true, false, true, true, true},
+                {false, true, true, true, true},
+                {true, true, true, true, true},
+        };
+
+        assertEquals(Collections.emptyList(), s.findPath(grid));
+    }
 
 }
