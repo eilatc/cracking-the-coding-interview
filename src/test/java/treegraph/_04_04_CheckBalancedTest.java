@@ -37,6 +37,13 @@ public class _04_04_CheckBalancedTest {
         assertFalse(s.isBalanced(root));
     }
 
+    /*
+                      1
+                 2         4
+              3    7          5
+            6                   9
+          8
+     */
     @Test
     public void withSameHeight_Unbalanced() {
         BinaryTreeNode root = new BinaryTreeNode(1);
@@ -48,6 +55,22 @@ public class _04_04_CheckBalancedTest {
         root.right = new BinaryTreeNode(4);
         root.right.right = new BinaryTreeNode(5);
         root.right.right.right = new BinaryTreeNode(9);
+        assertFalse(s.isBalanced(root));
+    }
+
+    @Test
+    public void withSameHeight_Unbalanced2() {
+        BinaryTreeNode root = new BinaryTreeNode(1);
+        root.left = new BinaryTreeNode(2);
+        root.left.left = new BinaryTreeNode(3);
+        root.left.right = new BinaryTreeNode(7);
+        root.left.left.left = new BinaryTreeNode(6);
+        root.left.left.left.left = new BinaryTreeNode(6);
+
+        root.right = new BinaryTreeNode(4);
+        root.right.right = new BinaryTreeNode(5);
+        root.right.right.right = new BinaryTreeNode(5);
+        root.right.left = new BinaryTreeNode(9);
         assertFalse(s.isBalanced(root));
     }
 }

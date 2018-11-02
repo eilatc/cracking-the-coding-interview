@@ -42,4 +42,12 @@ public class _04_02_MinimalTreeTest {
         assertEquals(4, binaryTreeNode.right.right.val);
     }
 
+    @Test
+    public void withSevenElements() {
+        BinaryTreeNode binaryTreeNode = s.buildMinimalTree(new int[]{1, 2, 3, 4, 5, 6, 7});
+        assertEquals(4, binaryTreeNode.val);
+        assertEquals(2, binaryTreeNode.left.val);
+        assertEquals(6, binaryTreeNode.right.val);
+        assertEquals(7, binaryTreeNode.right.right.val);
+    }
 }
