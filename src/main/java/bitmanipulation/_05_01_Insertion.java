@@ -14,6 +14,18 @@ package bitmanipulation;
 class _05_01_Insertion {
 
     int insert(int n, int m, int i, int j) {
-        throw new UnsupportedOperationException();
+     int clearBit = ~ (1 << i);
+     int index = i;
+
+     // clear i to j bits
+     while (index < j){
+         n = n & clearBit;
+         clearBit = (clearBit * 2) + 1;
+         index++;
+     }
+
+     m = m << i;
+     return n | m;
+
     }
 }

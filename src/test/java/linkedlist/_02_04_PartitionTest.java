@@ -3,6 +3,7 @@ package linkedlist;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class _02_04_PartitionTest {
 
@@ -20,7 +21,7 @@ public class _02_04_PartitionTest {
 
     @Test
     public void withSortedList_AndOutOfListX() {
-        assertEquals(LinkedListNode.of(3, 2, 1), s.partition(LinkedListNode.of(1, 2, 3), 4));
+        assertEquals(LinkedListNode.of(1, 2, 3), s.partition(LinkedListNode.of(1, 2, 3), 4));
     }
 
     @Test
@@ -30,12 +31,33 @@ public class _02_04_PartitionTest {
 
     @Test
     public void withUnSortedList() {
-        assertEquals(LinkedListNode.of(1, 2, 4, 3, 5), s.partition(LinkedListNode.of(4, 3, 2, 5, 1), 3));
+        checkPartition(s.partition(LinkedListNode.of(14, 13, 12, 15, 21, 7,1, 2, 4, 2),5), 7);
     }
 
     @Test
     public void withUnSortedList_AndOutOfScopeX() {
-        assertEquals(LinkedListNode.of(1, 2, 4, 3, 6), s.partition(LinkedListNode.of(3, 4, 2, 6, 1), 5));
+        checkPartition(s.partition(LinkedListNode.of(3, 4, 2, 6, 1),5), 5);
+    }
+
+    private void checkPartition(LinkedListNode head, int partitionValue) {
+        boolean isPartitioned = true;
+        boolean lessThenMode = true;
+        // Checking leftPart is less then partitionValue and rightPart is equal or greater
+        while (head != null) {
+            if (lessThenMode && head.val < partitionValue) {
+                if (head.next.val >= partitionValue) {
+                    lessThenMode = false;
+                }
+                head = head.next;
+            } else if (head.val >= partitionValue && !lessThenMode) {
+                head = head.next;
+            } else {
+                isPartitioned = false;
+                break;
+            }
+
+        }
+        assertTrue(isPartitioned);
     }
 
 }
