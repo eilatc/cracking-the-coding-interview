@@ -21,4 +21,9 @@ public class _16_06_SmallestDifferenceTest {
     public void withMultipleValuesEach() {
         Assert.assertEquals(3, s.findSmallestDiff(new int[]{1, 3, 15, 11, 2}, new int[]{23, 127, 235, 19, 8}));
     }
+
+    @Test
+    public void withEmptyValueEach() {
+        Assert.assertEquals(-1, s.findSmallestDiff(new int[1], new int[1]));
+    }
 }

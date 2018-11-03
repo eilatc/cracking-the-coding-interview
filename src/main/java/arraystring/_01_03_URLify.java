@@ -12,6 +12,21 @@ package arraystring;
  */
 class _01_03_URLify {
     char[] urlify(char[] chars, int trueLength) {
-        throw new UnsupportedOperationException();
+        int charsPointer = trueLength - 1;
+        int copyPointer = chars.length - 1;
+
+        while (charsPointer > 0) {
+            if (chars[charsPointer] != ' ') {
+                chars[copyPointer] = chars[charsPointer];
+                copyPointer--;
+                charsPointer--;
+            } else {
+                chars[copyPointer--] = '0';
+                chars[copyPointer--] = '2';
+                chars[copyPointer--] = '%';
+                charsPointer--;
+            }
+        }
+        return chars;
     }
 }

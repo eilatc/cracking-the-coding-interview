@@ -27,4 +27,11 @@ public class _02_03_DeleteMiddleNodeTest {
         Assert.assertEquals(LinkedListNode.of(1, 3), input);
     }
 
+    @Test
+    public void withMiddleNodeMoreValues() {
+        LinkedListNode input = LinkedListNode.of(10, 12, 3, 5, 6, 1, 8 ,9);
+        assertTrue(s.deleteMiddleNode(input.next.next.next));
+        Assert.assertEquals(LinkedListNode.of(10, 12, 3, 6, 1, 8 ,9), input);
+    }
+
 }
